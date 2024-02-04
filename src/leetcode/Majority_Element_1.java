@@ -6,7 +6,7 @@ public class Majority_Element_1 {
 
 	public static void main(String[] args) {
 		int[] arr= {3,2,3};
-		int x = majorityElement(arr);
+		int x = maj(arr);
 		System.out.println(x);
 	}
 	public static int majorityElement(int[] nums) {
@@ -29,5 +29,25 @@ public class Majority_Element_1 {
         }
         return -1;
     }
-
+	
+	
+//	 Boyer-Moore Voting Algorithm
+	
+	public static int maj(int[] arr) {
+		int f = arr[0];
+		int count =1;
+		for(int i =0;i<arr.length;i++) {
+			if(arr[i]==f) {
+				count++;
+			}
+			else {
+				count--;
+				if(count==0) { //Back to base condition, 
+					f = arr[i];
+					count =1;
+				}
+			}
+		}
+		return f;
+	}
 }
